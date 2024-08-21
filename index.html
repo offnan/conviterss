@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial 🌿🔥</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            color: #333;
+            margin-top: 50px;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="initialMessage">
+        <h1 class="emoji">🚬💨 Link abriu, fumaça subiu! 💨🚬</h1>
+        <button onclick="showInvitation()">Abrir convite 🎉</button>
+    </div>
+
+    <div id="invitationMessage" class="hidden">
+        <h1>🎉 PARABÉNS! 🎉</h1>
+        <p>VOCÊ ACABA DE RECEBER UM CONVITE PARA FUMAR UM COMIGO 🌿🔥</p>
+        <p>LOCAL: todo lugar é lugar 🌍</p>
+        <p>HORA: 4:20 ⏰</p>
+        <p>Você aceita?</p>
+        <button onclick="handleResponse('sim')">Sim ✅</button>
+        <button onclick="handleResponse('não')">Não ❌</button>
+    </div>
+
+    <div id="responseMessage" class="hidden">
+        <h1 id="responseText"></h1>
+        <div id="followUpQuestion" class="hidden">
+            <p>Vai jogar a inteira? 🎯</p>
+            <button onclick="handleFinalResponse('sim')">Sim 🎉</button>
+            <button onclick="handleFinalResponse('não')">Não ❌</button>
+        </div>
+    </div>
+
+    <script>
+        function showInvitation() {
+            document.getElementById('initialMessage').classList.add('hidden');
+            document.getElementById('invitationMessage').classList.remove('hidden');
+        }
+
+        function handleResponse(response) {
+            document.getElementById('invitationMessage').classList.add('hidden');
+            document.getElementById('responseMessage').classList.remove('hidden');
+
+            if (response === 'sim') {
+                document.getElementById('responseText').innerText = 'Ótimo! 🎉';
+                document.getElementById('followUpQuestion').classList.remove('hidden');
+            } else {
+                document.getElementById('responseText').innerText = 'Bob Marley fica triste com uma notícia dessas 😢';
+            }
+        }
+
+        function handleFinalResponse(finalResponse) {
+            document.getElementById('followUpQuestion').classList.add('hidden');
+
+            if (finalResponse === 'sim') {
+                document.getElementById('responseText').innerText = 'Parabéns! Sua presença acaba de ser confirmada 🎉';
+            } else {
+                document.getElementById('responseText').innerText = 'Sem inteira, sem sessão 🚫';
+            }
+        }
+    </script>
+</body>
+</html>
